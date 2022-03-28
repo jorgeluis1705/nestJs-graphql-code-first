@@ -4,6 +4,7 @@
 
 directive @upper on FIELD_DEFINITION
 
+"""UserType"""
 type User {
   _id: ID!
   nombre: String
@@ -12,6 +13,5 @@ type User {
 }
 
 type Query {
-  getUser(id: String!): User
   getAll: [User]
 }

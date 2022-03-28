@@ -1,10 +1,10 @@
-import { UsersResolver } from './users.resolver';
 import { Module } from '@nestjs/common';
-import { MongoDocuments } from 'src/utils/mongoDbConnection';
+import { UsersController } from './users.controller';
+import { UsersResolver } from './users.resolver';
 import { UsersService } from './users.service';
 
 @Module({
-  imports: [MongoDocuments],
-  providers: [UsersResolver, UsersService],
+  controllers: [UsersController],
+  providers: [UsersResolver, UsersService]
 })
 export class UsersModule {}

@@ -2,16 +2,10 @@ import { Int } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type UserDocument = UserMongo & Document;
+export type UserDocument = User & Document;
 
 @Schema()
-export class UserMongo {
-  @Prop({
-    type: String,
-    required: true,
-    unique: true,
-  })
-  id: string;
+export class User {
   @Prop({
     type: String,
   })
@@ -26,4 +20,4 @@ export class UserMongo {
   email: String;
 }
 
-export const UserSchema = SchemaFactory.createForClass(UserMongo);
+export const UserSchema = SchemaFactory.createForClass(User);

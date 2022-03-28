@@ -1,28 +1,12 @@
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
-import { DirectiveLocation, GraphQLDirective } from 'graphql';
 import { UsersModule } from './users/users.module';
+import { graphqlModuleConfiguration } from './utils/model-grahql';
+import { mongoDbConnection } from './utils/mongoDbConnection';
 
 @Module({
-  imports: [
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
-      autoSchemaFile: 'schema.gql',
-      installSubscriptionHandlers: true,
-      buildSchemaOptions: {
-        directives: [
-          new GraphQLDirective({
-            name: 'upper',
-            locations: [DirectiveLocation.FIELD_DEFINITION],
-          }),
-        ],
-      },
-    }),
-    UsersModule,
-  ],
+  imports: [graphqlModuleConfiguration, mongoDbConnection, UsersModule],
   providers: [AppService],
   controllers: [AppController],
 })

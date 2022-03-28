@@ -8,6 +8,7 @@ export type UserDocument = User & Document;
 export class User {
   @Prop({
     type: String,
+    isRequired: true,
   })
   nombre: String;
   @Prop({

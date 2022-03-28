@@ -15,3 +15,13 @@ type User {
 type Query {
   getAll: [User]
 }
+
+type Mutation {
+  createItem(input: UserInput!): User!
+}
+
+input UserInput {
+  nombre: String!
+  apellidoPaterno: String!
+  email: String!
+}

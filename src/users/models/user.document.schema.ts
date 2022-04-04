@@ -10,15 +10,16 @@ export class User {
     type: String,
     isRequired: true,
   })
-  nombre: String;
+  nombre: string;
+  @Prop({
+    type: String,
+    isRequired: false,
+  })
+  apellidoPaterno: string;
   @Prop({
     type: String,
   })
-  apellidoPaterno: String;
-  @Prop({
-    type: String,
-  })
-  email: String;
+  email: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

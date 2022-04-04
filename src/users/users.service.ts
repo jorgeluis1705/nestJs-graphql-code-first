@@ -1,4 +1,4 @@
-import { isObservable, Observable } from 'rxjs';
+import { from, isObservable, map, Observable, of } from 'rxjs';
 import { User, UserDocument } from './models/user.document.schema';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -34,5 +34,9 @@ export class UsersService {
   async create(createCatDto: UserInput): Promise<User> {
     const createdCat = new this.userModel(createCatDto);
     return await createdCat.save();
+  }
+
+  delteUserService(id: string): Observable<string> {
+    return from(this.userModel.findByIdAndDelete(id)).pipe(map((res) => id));
   }
 }

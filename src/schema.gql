@@ -14,10 +14,12 @@ type User {
 
 type Query {
   getAll: [User]
+  getOne(userID: String!): User!
 }
 
 type Mutation {
   createItem(input: UserInput!): User!
+  delteUser(userID: String!): String!
 }
 
 input UserInput {

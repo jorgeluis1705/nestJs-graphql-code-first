@@ -7,7 +7,7 @@ import { User as UserMongo } from './models/user.document.schema';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Get()
+  @Get('')
   getAll(): Observable<UserMongo[]> {
     return new Observable((obs) => {
       this.usersService.findAll().subscribe({

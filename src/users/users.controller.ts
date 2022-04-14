@@ -5,9 +5,7 @@ import { User as UserMongo } from './models/user.document.schema';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {
-    console.log('Xd');
-  }
+  constructor(private readonly usersService: UsersService) {}
 
   @Get('')
   getAll(): Observable<UserMongo[]> {

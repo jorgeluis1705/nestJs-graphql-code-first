@@ -1,14 +1,14 @@
 FROM node:alpine as dependencies
-WORKDIR /my-project
-
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn install --frozen-lockfile
 
-FROM node:alpine as builder
-WORKDIR /my-project
+FROM node:alpine AS builder
+WORKDIR /app
+COPY --from=dependencies /app/node_modules ./node_modules
 COPY . .
 RUN yarn build
-RUN ls
 
 EXPOSE 3000
 CMD ["yarn", "start:prod"]

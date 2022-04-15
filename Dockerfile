@@ -11,6 +11,8 @@ COPY . .
 RUN yarn build
 
 EXPOSE 3000
+
+ENV PORT 3000
 CMD ["yarn", "start:prod"]
 # FROM node:alpine as runner
 # WORKDIR /my-project
